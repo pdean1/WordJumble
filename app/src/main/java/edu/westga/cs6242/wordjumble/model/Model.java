@@ -1,4 +1,4 @@
-package edu.westga.cs6242.wordjumble.edu.westga.cs6242.wordjumble.model;
+package edu.westga.cs6242.wordjumble.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;

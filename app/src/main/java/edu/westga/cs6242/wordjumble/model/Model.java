@@ -23,8 +23,12 @@ public class Model {
                 "cajole", "gazebo", "hijack", "logjam", "jockey", "junket", "piques", "squeak"));
 
         //by default, use 5 letter words
-        this.setWordLengthToFive();
+        //this.setWordLengthToFive(); removed to favor variability
         random = new Random();
+        if (random.nextInt(100) > 50)
+            this.setWordLengthToFive();
+        else
+            this.setWordLengthToSix();
     }//constructor
 
     /**

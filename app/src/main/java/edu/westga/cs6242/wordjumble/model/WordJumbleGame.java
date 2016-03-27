@@ -50,7 +50,7 @@ public class WordJumbleGame extends edu.westga.cs6242.wordjumble.model.Model {
      */
     public Boolean gameIsOver()
     {
-        if (strUserAttempt.equals(strCurrentWord))
+        if (strUserAttempt.equalsIgnoreCase(strCurrentWord)) // a equal to b regardless of case...
         {
             return true;
         }

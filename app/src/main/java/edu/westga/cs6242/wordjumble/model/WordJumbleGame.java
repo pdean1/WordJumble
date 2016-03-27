@@ -20,6 +20,21 @@ public class WordJumbleGame extends edu.westga.cs6242.wordjumble.model.Model {
         this.strUserAttempt = "";
     }
 
+    public String getStrCurrentWord()
+    {
+        return this.strCurrentWord;
+    }
+
+    public String getStrScrambledWord()
+    {
+        return this.strScrambledWord;
+    }
+
+    public String getStrUserAttempt()
+    {
+        return this.strUserAttempt;
+    }
+
     /**
      * Updates this user's attempt to solve the word jumble
      * @param _strUserAttempt The updated user's attempt

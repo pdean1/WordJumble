@@ -6,4 +6,6 @@
     <string name="hud_text">HUD Text Won/Try Again</string>
     <string name="button_submit">Submit Attempt</string>
     <string name="button_clear">Clear Attempt</string>
+    <string name="six_letter_game">Six Letter Game</string>
+    <string name="five_letter_game">Five Letter Game</string>
 </resources>

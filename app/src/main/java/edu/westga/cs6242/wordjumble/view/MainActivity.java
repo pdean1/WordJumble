@@ -6,8 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RadioButton;
 
 import edu.westga.cs6242.wordjumble.R;
+import edu.westga.cs6242.wordjumble.model.WordJumbleGame;
+import edu.westga.cs6242.wordjumble.model.enums.EWordLength;
+import edu.westga.cs6242.wordjumble.model.util.WJUtilities;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,7 +48,15 @@ public class MainActivity extends AppCompatActivity {
      */
     public void click_StartNewWordJumbleGame(View v)
     {
+        EWordLength length = EWordLength.FIVE_LETTER_WORD;
+        RadioButton rbSix  = (RadioButton) findViewById(R.id.rbSixLetterGame);
+        if (rbSix.isChecked())
+            length = EWordLength.SIX_LETTER_WORD;
+        WordJumbleGame game = new WordJumbleGame(length);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(WJUtilities.NEW_GAME, game);
         Intent intent = new Intent(v.getContext(), GameActivity.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
  }

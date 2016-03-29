@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import edu.westga.cs6242.wordjumble.R;
 import edu.westga.cs6242.wordjumble.model.WordJumbleGame;
+import edu.westga.cs6242.wordjumble.model.util.WJUtilities;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -23,7 +24,8 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        this.wjgGame = new WordJumbleGame(); // creates a new WordJumbleGame Instance
+        // this.wjgGame = new WordJumbleGame(); // creates a new WordJumbleGame Instance
+        this.wjgGame = getIntent().getParcelableExtra(WJUtilities.NEW_GAME);
         this.initViewVariables();
         this.tvScrambledWord.setText(this.wjgGame.getStrScrambledWord());
     }

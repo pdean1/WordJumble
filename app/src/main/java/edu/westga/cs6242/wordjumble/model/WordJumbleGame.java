@@ -1,5 +1,8 @@
 package edu.westga.cs6242.wordjumble.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import edu.westga.cs6242.wordjumble.controller.Controller;
 import edu.westga.cs6242.wordjumble.model.enums.EWordLength;
 
@@ -8,7 +11,7 @@ import edu.westga.cs6242.wordjumble.model.enums.EWordLength;
  * @version 20162703
  * This class represents a Word Jumble Game
  */
-public final class WordJumbleGame {
+public final class WordJumbleGame implements Parcelable {
     private String     strCurrentWord;      // the current word the user is attempting to solve
     private String     strScrambledWord;    // a scrambled version of strCurrentWord
     private String     strUserAttempt;      // the user's attempt at solving the strScrambledWord
@@ -32,6 +35,27 @@ public final class WordJumbleGame {
         this.strScrambledWord = this._controller.scrambleWord(this.strCurrentWord);
         this.strUserAttempt   = "";
     }
+
+    protected WordJumbleGame(Parcel in) {
+        strCurrentWord = in.readString();
+        strScrambledWord = in.readString();
+        strUserAttempt = in.readString();
+    }
+
+    /**
+     * Implemented from Parcelable
+     */
+    public static final Creator<WordJumbleGame> CREATOR = new Creator<WordJumbleGame>() {
+        @Override
+        public WordJumbleGame createFromParcel(Parcel in) {
+            return new WordJumbleGame(in);
+        }
+
+        @Override
+        public WordJumbleGame[] newArray(int size) {
+            return new WordJumbleGame[size];
+        }
+    };
 
     public String getStrCurrentWord()
     {
@@ -68,5 +92,31 @@ public final class WordJumbleGame {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Describe the kinds of special objects contained in this Parcelable's
+     * marshalled representation.
+     *
+     * @return a bitmask indicating the set of special object types marshalled
+     * by the Parcelable.
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * Flatten this object in to a Parcel.
+     *
+     * @param dest  The Parcel in which the object should be written.
+     * @param flags Additional flags about how the object should be written.
+     *              May be 0 or {@link #PARCELABLE_WRITE_RETURN_VALUE}.
+     */
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(strCurrentWord);
+        dest.writeString(strScrambledWord);
+        dest.writeString(strUserAttempt);
     }
 }

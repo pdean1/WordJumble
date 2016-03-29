@@ -4,31 +4,38 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
+import edu.westga.cs6242.wordjumble.model.enums.EWordLength;
+import edu.westga.cs6242.wordjumble.model.interfaces.IModel;
+
 /**
  * Created by Wayne Mullins on 3/18/2016
  * @version 03/18/2016
  */
-public class Model {
+public class Model implements IModel {
 
     private ArrayList<String> fiveCharWordList;
     private ArrayList<String> sixCharWordList;
     private ArrayList<String> wordSource;
     private Random random;
 
-    public Model() {
+    public Model(EWordLength length) {
+        random = new Random();
         this.fiveCharWordList = new ArrayList<>(Arrays.asList(
                 "buxom", "chump", "crazy", "gauze", "juice", "maize", "quick", "topaz"));
 
         this.sixCharWordList = new ArrayList<>(Arrays.asList(
                 "cajole", "gazebo", "hijack", "logjam", "jockey", "junket", "piques", "squeak"));
-
-        //by default, use 5 letter words
-        //this.setWordLengthToFive(); removed to favor variability
-        random = new Random();
-        if (random.nextInt(100) > 50)
-            this.setWordLengthToFive();
-        else
-            this.setWordLengthToSix();
+        // Determines what size of word to play with
+        switch (length) {
+            case FIVE_LETTER_WORD:
+                this.setWordLengthToFive();
+                break;
+            case SIX_LETTER_WORD:
+                this.setWordLengthToSix();
+                break;
+            default: // by default, use 5 letter words
+                this.setWordLengthToFive();
+        }
     }//constructor
 
     /**

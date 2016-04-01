@@ -1,8 +1,13 @@
 package edu.westga.cs6242.wordjumble.model;
 
+import android.content.Context;
+import android.content.res.AssetManager;
+
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
 
 import edu.westga.cs6242.wordjumble.model.enums.EWordLength;
 import edu.westga.cs6242.wordjumble.model.interfaces.IModel;
@@ -20,11 +25,23 @@ public class Model implements IModel {
 
     public Model(EWordLength length) {
         random = new Random();
+        /*--------------------------------------------------------------------------------
+        //Code for Part 1
         this.fiveCharWordList = new ArrayList<>(Arrays.asList(
                 "buxom", "chump", "crazy", "gauze", "juice", "maize", "quick", "topaz"));
 
         this.sixCharWordList = new ArrayList<>(Arrays.asList(
                 "cajole", "gazebo", "hijack", "logjam", "jockey", "junket", "piques", "squeak"));
+        */
+        /*--------------------------------------------------------------------------------
+        //Code for Part 2
+         */
+        this.fiveCharWordList = new ArrayList<>();
+        this.sixCharWordList = new ArrayList<>();
+
+        LoadWordsFromFile("FiveCharWords.txt", fiveCharWordList);
+        LoadWordsFromFile("SixCharWords.txt", sixCharWordList);
+
         // Determines what size of word to play with
         switch (length) {
             case FIVE_LETTER_WORD:
@@ -90,5 +107,21 @@ public class Model implements IModel {
         }
         return new String(chars);
     }//scrambleWord()
+
+    private void LoadWordsFromFile(String filePath, ArrayList<String> wordList) {
+        try {
+            Context context = App.getContext();
+            AssetManager am = App.getContext().getAssets();
+            InputStream is = am.open(filePath);
+            Scanner reader = new Scanner(is);
+            wordList.clear();
+            while (reader.hasNextLine()) {
+                String word = reader.nextLine();
+                wordList.add(word);
+            }
+        } catch (Exception ex) {
+            assert false;
+        }
+    }
 
 }//class Model

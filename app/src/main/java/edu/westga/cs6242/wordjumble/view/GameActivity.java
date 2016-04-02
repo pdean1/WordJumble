@@ -3,6 +3,7 @@ package edu.westga.cs6242.wordjumble.view;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -74,6 +75,7 @@ public class GameActivity extends AppCompatActivity {
         this.tvHUD = (TextView) findViewById(R.id.tvHUD);
         this.tvHUD.setText("");
         this.tvHUD.setVisibility(View.INVISIBLE);
+        this.tvHUD.setTextColor(Color.RED); // sets the error text red
     }
 
     private void displayHUDMessage(String s)

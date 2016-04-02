@@ -18,18 +18,17 @@
         android:text="@string/start_new_game"
         android:id="@+id/btnStartGame"
         android:onClick="click_StartNewWordJumbleGame"
-        android:layout_alignBottom="@+id/radioGroup2"
+        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentEnd="true" />
 
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/radioGroup2">
+        android:id="@+id/radioGroup"
+        android:layout_below="@+id/btnStartGame"
+        android:layout_alignLeft="@+id/btnStartGame"
+        android:layout_alignStart="@+id/btnStartGame">
 
         <RadioButton
             android:layout_width="wrap_content"

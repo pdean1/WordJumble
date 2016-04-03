@@ -1,7 +1,8 @@
 package edu.westga.cs6242.wordjumble;
 
 import org.junit.Test;
-import edu.westga.cs6242.wordjumble.edu.westga.cs6242.wordjumble.model.Model;
+import edu.westga.cs6242.wordjumble.model.Model;
+import edu.westga.cs6242.wordjumble.model.enums.EWordLength;
 
 import static org.junit.Assert.*;
 
@@ -9,12 +10,13 @@ import static org.junit.Assert.*;
  * To work on unit tests, switch the Test Artifact in the Build Variants view.
  */
 public class WordJumbleModelUnitTest {
+
     /**
         Test that the initial word length is 5 which also verifies constructor set it up
      */
     @Test
     public void testInitialWordLength() {
-        Model model = new Model();
+        Model model = new Model(EWordLength.FIVE_LETTER_WORD, true);
         assertEquals(5, model.getWordLength());
     }
 
@@ -23,8 +25,9 @@ public class WordJumbleModelUnitTest {
      */
     @Test
     public void testRandomFiveLetterWordForLength() {
-        Model model = new Model();
-        assertEquals(5, model.getRandomWord().length() );
+        Model model = new Model(EWordLength.SIX_LETTER_WORD, true);
+        model.setWordLengthToFive();
+        assertEquals(5, model.getRandomWord().length());
     }
 
     /**
@@ -32,7 +35,7 @@ public class WordJumbleModelUnitTest {
      */
     @Test
     public void testSettingSixLetterWordLength() {
-        Model model = new Model();
+        Model model = new Model(EWordLength.FIVE_LETTER_WORD, true);
         model.setWordLengthToSix();
         assertEquals(6, model.getWordLength());
     }
@@ -42,7 +45,7 @@ public class WordJumbleModelUnitTest {
      */
     @Test
     public void testRandomSixLetterWordForLength() {
-        Model model = new Model();
+        Model model = new Model(EWordLength.FIVE_LETTER_WORD, true);
         model.setWordLengthToSix();
         assertEquals(6, model.getRandomWord().length());
     }
@@ -52,7 +55,7 @@ public class WordJumbleModelUnitTest {
      */
     @Test
     public void testScrambleWord() {
-        Model model = new Model();
+        Model model = new Model(EWordLength.FIVE_LETTER_WORD, true);
         model.setWordLengthToSix();
         String word = model.getRandomWord();
         String scrambledWord = model.scrambleWord(word);

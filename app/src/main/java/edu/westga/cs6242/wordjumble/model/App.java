@@ -16,7 +16,8 @@ public class App extends Application {
     private static Context _context;
 
     /**
-     * record the context in onCreate() and make it statically available
+     * record the context in onCreate() and make it statically available.
+     * Note: this is triggered only for live and instrumentation testing
      */
     @Override
     public void onCreate() {

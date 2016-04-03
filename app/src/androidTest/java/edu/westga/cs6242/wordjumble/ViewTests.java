@@ -82,6 +82,7 @@ public class ViewTests extends ActivityInstrumentationTestCase2<MainActivity> {
                 btnStart.performClick();
             }
         });
+        getInstrumentation().waitForIdleSync();
         Activity gameActivity = getInstrumentation().waitForMonitorWithTimeout(monitor, 5000);
         assertNotNull(gameActivity);
         final TextView tvSolvableString

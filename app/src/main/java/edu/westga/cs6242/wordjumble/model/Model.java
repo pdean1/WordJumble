@@ -23,24 +23,22 @@ public class Model implements IModel {
     private ArrayList<String> wordSource;
     private Random random;
 
+    //standard constructor used by Controller/UI
     public Model(EWordLength length) {
+
+        this(length,false);
+    }//constructor(EWordLength)
+
+    //detailed constructor to specify unitTestMode
+    public Model(EWordLength length, boolean unitTestMode) {
         random = new Random();
-        /*--------------------------------------------------------------------------------
-        //Code for Part 1
+
+        //Code for Part 1 and JUnit Testing
         this.fiveCharWordList = new ArrayList<>(Arrays.asList(
                 "buxom", "chump", "crazy", "gauze", "juice", "maize", "quick", "topaz"));
 
         this.sixCharWordList = new ArrayList<>(Arrays.asList(
                 "cajole", "gazebo", "hijack", "logjam", "jockey", "junket", "piques", "squeak"));
-        */
-        /*--------------------------------------------------------------------------------
-        //Code for Part 2
-         */
-        this.fiveCharWordList = new ArrayList<>();
-        this.sixCharWordList = new ArrayList<>();
-
-        LoadWordsFromFile("FiveCharWords.txt", fiveCharWordList);
-        LoadWordsFromFile("SixCharWords.txt", sixCharWordList);
 
         // Determines what size of word to play with
         switch (length) {
@@ -53,7 +51,23 @@ public class Model implements IModel {
             default: // by default, use 5 letter words
                 this.setWordLengthToFive();
         }
-    }//constructor
+
+        //if we're in JUnit Test mode, test against fixed array because the necessary Application
+        //Context is not directly available under JUnit and is required to obtain file paths in the
+        //Assets directory.
+        if (unitTestMode)
+            return;
+
+        /*--------------------------------------------------------------------------------
+        //Code for Part 2 and Instrumentation testing
+         */
+        this.fiveCharWordList = new ArrayList<>();
+        this.sixCharWordList = new ArrayList<>();
+
+        LoadWordsFromFile("FiveCharWords.txt", fiveCharWordList);
+        LoadWordsFromFile("SixCharWords.txt", sixCharWordList);
+
+    }//constructor(EWordLength)
 
     /**
      * getWordLength()

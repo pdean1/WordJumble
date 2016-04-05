@@ -10,7 +10,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="edu.westga.cs6242.wordjumble.MainActivity"
-    tools:showIn="@layout/activity_main">
+    tools:showIn="@layout/activity_main"
+    android:background="#092a53">
 
     <Button
         android:layout_width="wrap_content"
@@ -18,26 +19,29 @@
         android:text="@string/start_new_game"
         android:id="@+id/btnStartGame"
         android:onClick="click_StartNewWordJumbleGame"
-        android:layout_alignBottom="@+id/radioGroup"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp" />
 
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/radioGroup"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/radioGroup">
+        android:layout_centerHorizontal="true">
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="@string/five_letter_game"
             android:id="@+id/rbFiveLetterGame"
-            android:checked="true"
-            android:layout_gravity="center_horizontal" />
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_radio"
+            android:button="@android:color/transparent"
+            android:padding="15dp"
+            android:textColor="#240105" />
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -45,7 +49,12 @@
             android:text="@string/six_letter_game"
             android:id="@+id/rbSixLetterGame"
             android:checked="false"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_radio"
+            android:button="@android:color/transparent"
+            android:padding="15dp"/>
 
     </RadioGroup>
 

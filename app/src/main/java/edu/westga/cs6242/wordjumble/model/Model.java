@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 import edu.westga.cs6242.wordjumble.model.enums.EWordLength;
 import edu.westga.cs6242.wordjumble.model.interfaces.IModel;
+import edu.westga.cs6242.wordjumble.model.util.WJUtilities;
 
 /**
  * Created by Wayne Mullins on 3/18/2016
@@ -64,8 +65,8 @@ public class Model implements IModel {
         this.fiveCharWordList = new ArrayList<>();
         this.sixCharWordList = new ArrayList<>();
 
-        LoadWordsFromFile("FiveCharWords.txt", fiveCharWordList);
-        LoadWordsFromFile("SixCharWords.txt", sixCharWordList);
+        LoadWordsFromFile(WJUtilities.FIVE_CHAR_FILE, fiveCharWordList);
+        LoadWordsFromFile(WJUtilities.SIX_CHAR_FILE, sixCharWordList);
 
     }//constructor(EWordLength)
 
